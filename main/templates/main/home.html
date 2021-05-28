@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+</head>
+<body>
+    
+    <h3 class="">Latest COVID 19 STATS :  {{country}}  {{continent}}   {{date_time}}</h3>
+    <h3>Total populations : {{total_population}}</h3>
+    {% include 'main/msg.html' %}
+<div class="container bootstrap snippet ">
+    <form action="" method="post" >
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+    </form>
+    <br>
+    <div class="row mt-3">
+    <div class="col-lg-6 col-md-12 text-center">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading green"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content green">
+          <div class="circle-tile-description text-faded"> Total TESTS  </div>
+          <div class="circle-tile-number text-faded ">{{total_tests}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+<h3>CASES:</h3>
+    <div class="col-lg-2 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content dark-blue">
+          <div class="circle-tile-description text-faded"> New</div>
+          <div class="circle-tile-number text-faded ">{{new_cases}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content dark-blue">
+          <div class="circle-tile-description text-faded"> Active</div>
+          <div class="circle-tile-number text-faded ">{{active_cases}}</div>
+        </div>
+      </div>
+    </div>
+<!-- 
+    <div class="col-lg-2 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content dark-blue">
+          <div class="circle-tile-description text-faded"> CRITICAL</div>
+          <div class="circle-tile-number text-faded ">{{critical_cases}}</div>
+        </div>
+      </div>
+    </div> -->
+     
+    <div class="col-lg-2 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content dark-blue">
+          <div class="circle-tile-description text-faded"> RECOVERED</div>
+          <div class="circle-tile-number text-faded ">{{total_recovered}}</div>
+        </div>
+      </div>
+    </div>
+     
+
+    <div class="col-lg-2 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content red">
+          <div class="circle-tile-description text-faded"> Total </div>
+          <div class="circle-tile-number text-faded ">{{total_cases}}</div>
+        </div>
+      </div>
+    </div>
+ </div> 
+
+ <div class="row">
+    <h3>Deaths:</h3>
+        <div class="col-lg-2 col-sm-6">
+          <div class="circle-tile ">
+            <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+            <div class="circle-tile-content dark-blue">
+              <div class="circle-tile-description text-faded"> New</div>
+              <div class="circle-tile-number text-faded ">{{new_deaths}}</div>
+            </div>
+          </div>
+        </div>
+         
+    
+        <div class="col-lg-2 col-sm-6">
+          <div class="circle-tile ">
+            <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+            <div class="circle-tile-content red">
+              <div class="circle-tile-description text-faded"> Total </div>
+              <div class="circle-tile-number text-faded ">{{total_deaths}}</div>
+            </div>
+          </div>
+        </div>
+      
+
+        </div>
+     </div> 
+
+
+</div>  
+  
+</body>
+</html>
