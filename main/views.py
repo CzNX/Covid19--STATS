@@ -21,28 +21,31 @@ headers = {
 
 # Create your views here.
 def home(request):
-    if request.method == 'POST':
-        try:
-            country_name = request.POST.get('search')
-            querystring = {"country":country_name,"day":today}
-            response = requests.request("GET", url, headers=headers, params=querystring).json()
-            d = response['response']
-            s= d[0]
-            context = {
-                'date_time':s['time'] ,
-                'continent': s['continent'],
-                'country' : s['country'],
-                'total_population': s['population'],
-                'new_cases': s['cases']['new'],
-                'active_cases': s['cases']['active'],
-                'critical_cases': s['cases']['critical'],
-                'total_recovered': s['cases']['recovered'],
-                'total_cases': s['cases']['total'],
-                'new_deaths': s['deaths']['new'],
-                'total_deaths':s['deaths']['total'],
-                'total_tests' : s['tests']['total'],
-            }
-            return render(request,'main/home.html',context)
-        except:
-            messages.error(request, "Sorry...Something Went Wrong...")
-    return render(request,'main/home.html')
+    try:
+        country_name = request.POST.get('search')
+        if country_name:
+            querystring = {"country":country_name ,"day":today}
+        else:
+            querystring = {"country":'Nepal' ,"day":today}   
+        response = requests.request("GET", url, headers=headers, params=querystring).json()
+        d = response['response']
+        s= d[0]
+        context = {
+            'date_time':s['time'] ,
+            'continent': s['continent'],
+            'country' : s['country'],
+            'total_population': s['population'],
+            'new_cases': s['cases']['new'],
+            'active_cases': s['cases']['active'],
+            'critical_cases': s['cases']['critical'],
+            'total_recovered': s['cases']['recovered'],
+            'total_cases': s['cases']['total'],
+            'new_deaths': s['deaths']['new'],
+            'total_deaths':s['deaths']['total'],
+            'total_tests' : s['tests']['total'],
+        }
+        return render(request,'main/home.html',context)
+    except:
+        messages.error(request, "Sorry...Something Went Wrong...")
+
+    return render(request,'main/home.html')   
